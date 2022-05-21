@@ -1,0 +1,176 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inconsolata:wght@400;900&family=Permanent+Marker&display=swap");
+@media only screen and (max-width: 600px) {
+  p {
+    margin: 0;
+  }
+  body {
+    background: linear-gradient(
+      to right,
+      rgba(66, 177, 80, 0.481),
+      rgba(62, 153, 66, 0.649),
+      rgba(55, 140, 54, 0.622)
+    );
+  }
+  #headTitle {
+    text-align: center;
+    font-family: Caveat;
+    color: rgb(255, 255, 255);
+    font-size: 3rem;
+    text-decoration: none;
+  }
+  .nav ul {
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Inconsolata", "bold";
+    padding: 0;
+  }
+  .container {
+    background-color: rgb(244, 241, 241);
+    width: 90vw;
+    margin-left: 3%;
+    height: 100vh;
+    border: none;
+    border-radius: 16px;
+    border: solid thin rgb(255, 255, 255);
+    overflow: scroll;
+  }
+  .nav li {
+    padding: 10% 0%;
+    margin: 2%;
+    color: green;
+    font-size: 20px;
+    width: 70%;
+    border: solid thin white;
+    border-radius: 8px;
+    background-color: white;
+    text-align: center;
+    overflow: hidden;
+  }
+  #li-link {
+    width: 100%;
+    border-radius: 0;
+  }
+  .formWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+  form {
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .todo-input {
+    border-radius: 4px;
+    padding-top: 0.4rem;
+    padding-right: 1%;
+    font-size: 1.5rem;
+    font-family: "Inconsolata", "bold";
+    border: none;
+    width: 80vw;
+  }
+  .todo-button {
+    font-size: 1.4rem;
+    border: none;
+    width: 80vw;
+    background-image: linear-gradient(to right, #ff6f47, orange);
+    color: #f7fffe;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    font-size: 1.4rem;
+  }
+
+  select {
+    color: #f58b6e;
+    font-family: "Inconsolata", "extrabold 800";
+    font-size: 90%;
+    cursor: pointer;
+    background-color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 3%;
+    margin-top: 2%;
+
+    width: 81vw;
+  }
+  select option {
+    font-family: Caveat;
+  }
+  .trash-btn,
+  .complete-btn {
+    background: #ff6f47;
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    display: block;
+    height: 100%;
+  }
+  .trash-btn {
+    border-radius: 0 8px 8px 0;
+  }
+  .todo-item {
+    padding-left: 10px;
+    align-self: center;
+    font-family: "Inconsolata", "bold";
+  }
+  .todo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .todo-list {
+    min-width: 30%;
+    list-style: none;
+    padding: 0;
+  }
+
+  .todo {
+    margin-right: 10%;
+    background: white;
+    font-size: 1.5rem;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+
+    border-radius: 8px;
+    width: 80vw;
+    background-position: left;
+    transition: background-position 0.5s ease-in-out;
+  }
+  .btn-wrapper {
+    display: flex;
+    flex-direction: row;
+  }
+  .complete-btn {
+    background: rgb(11, 212, 162);
+    /* height: 100%; */
+  }
+  .trash-btn {
+    background-image: linear-gradient(to right, #ff6f47, orange);
+  }
+  .todo p {
+    flex: 1;
+    padding: 3.94%;
+  }
+
+  .completed {
+    background: linear-gradient(to right, white 50%, rgb(11, 212, 162) 50%);
+
+    background-size: 200%;
+    transition: background-position 0.5s ease-in-out;
+
+    background-position: right;
+    transition: all 0.5s ease;
+
+    color: white;
+  }
+}
