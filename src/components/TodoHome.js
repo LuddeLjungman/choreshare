@@ -12,14 +12,16 @@ const api = axios.create({
 function TodoHome() {
   const [inputText, setInputText] = useState("");
   const [todos, setTodos] = useState();
-  const [status, setStatus] = useState("all");
+  const [status, setStatus] = useState("All");
   const [filteredTodos, setFilteredTodos] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const getTodos = useCallback(async () => {
     const response = await api.get("/all");
-    setTodos(response.data);
-    setLoading(false);
+    if (response.status === 200) {
+      setTodos(response.data);
+      setLoading(false);
+    }
   }, []);
 
   useEffect(() => {
@@ -44,6 +46,10 @@ function TodoHome() {
     filterHandler();
   }, [todos, status]);
 
+  useEffect(() => {
+    getTodos();
+  }, [[todos]]);
+
   return (
     <div>
       {loading ? (
@@ -62,6 +68,8 @@ function TodoHome() {
         inputText={inputText}
         setInputText={setInputText}
         setStatus={setStatus}
+        filteredTodos={filteredTodos}
+        setFilteredTodos={setFilteredTodos}
       />
     </div>
   );

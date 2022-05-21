@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaPlus } from "react-icons/fa";
 import axios from "axios";
 
@@ -6,29 +6,54 @@ const api = axios.create({
   baseURL: `http://localhost:8080/api`,
 });
 
-const Form = ({ inputText, setInputText, todos, setTodos, setStatus }) => {
+const Form = ({
+  inputText,
+  setInputText,
+  todos,
+  setTodos,
+  setStatus,
+  filteredTodos,
+  setFilteredTodos,
+}) => {
   const inputTextHandler = (e) => {
     setInputText(e.target.value);
   };
   const submitTodoHandler = (e) => {
     e.preventDefault();
-    const addTodo = api
+    api
       .post("/create", {
         body: inputText,
       })
       .then(function (response) {
-        console.log(response);
         setTodos([...todos, response.data]);
       });
-
     setInputText("");
   };
   const statusHandler = (e) => {
     setStatus(e.target.value);
   };
+  const deleteAllCompleteHandler = (e) => {
+    e.preventDefault();
+    api.delete("/all").then(function (response) {
+      console.log(typeof response.data);
+      setFilteredTodos(
+        response.data.forEach((deleted) =>
+          todos.find((todo) => todo.id !== deleted.id)
+        )
+      );
+    });
+    // setTodos(todos.filter((deletedTodo) => deletedTodos !== todos));
+  };
 
   return (
     <form className="formWrapper">
+      <button
+        type="button"
+        className="todo-button"
+        onClick={deleteAllCompleteHandler}
+      >
+        DELETE COMPLETED
+      </button>
       <div className="inputWrapper">
         <input
           value={inputText}
