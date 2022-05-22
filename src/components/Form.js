@@ -6,15 +6,7 @@ const api = axios.create({
   baseURL: `http://localhost:8080/api`,
 });
 
-const Form = ({
-  inputText,
-  setInputText,
-  todos,
-  setTodos,
-  setStatus,
-  filteredTodos,
-  setFilteredTodos,
-}) => {
+const Form = ({ inputText, setInputText, todos, setTodos, setStatus }) => {
   const inputTextHandler = (e) => {
     setInputText(e.target.value);
   };
@@ -35,14 +27,12 @@ const Form = ({
   const deleteAllCompleteHandler = (e) => {
     e.preventDefault();
     api.delete("/all").then(function (response) {
-      console.log(typeof response.data);
-      setFilteredTodos(
+      setTodos(
         response.data.forEach((deleted) =>
           todos.find((todo) => todo.id !== deleted.id)
         )
       );
     });
-    // setTodos(todos.filter((deletedTodo) => deletedTodos !== todos));
   };
 
   return (

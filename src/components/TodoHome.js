@@ -17,10 +17,14 @@ function TodoHome() {
   const [loading, setLoading] = useState(true);
 
   const getTodos = useCallback(async () => {
-    const response = await api.get("/all");
-    if (response.status === 200) {
-      setTodos(response.data);
-      setLoading(false);
+    try {
+      const response = await api.get("/all");
+      if (response.status === 200) {
+        setTodos(response.data);
+        setLoading(false);
+      }
+    } catch (error) {
+      console.error(error.message);
     }
   }, []);
 

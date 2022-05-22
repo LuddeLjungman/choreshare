@@ -49,6 +49,39 @@
     text-align: center;
     overflow: hidden;
   }
+
+  .chore {
+    display: flex;
+    justify-content: center;
+    padding: 10% 0%;
+    margin: 2%;
+    color: green;
+    font-size: 20px;
+    width: 70%;
+    border: solid thin white;
+    border-radius: 8px;
+    background-color: red;
+    text-align: center;
+    overflow: hidden;
+    transition: background-position 0.5s ease-in-out;
+  }
+
+  .chorecompleted {
+    display: flex;
+    justify-content: center;
+    padding: 10% 0%;
+    margin: 2%;
+    color: green;
+    font-size: 20px;
+    width: 70%;
+    border: solid thin white;
+    border-radius: 8px;
+    background-color: green;
+    text-align: center;
+    overflow: hidden;
+    transition: background-position 0.5s ease-in-out;
+  }
+
   #li-link {
     width: 100%;
     border-radius: 0;

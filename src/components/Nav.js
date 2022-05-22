@@ -1,5 +1,11 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
+import Chore from ".//Chore";
+import axios from "axios";
+
+// const api = axios.create({
+//   baseURL: `http://localhost:8080/chore`,
+// });
 
 const Nav = () => {
   const linkStyle = {
@@ -17,17 +23,52 @@ const Nav = () => {
     textAlign: "center",
     overflow: "hidden",
   };
+  const [chores, setChores] = useState();
+  const [loadingNAV, setLoadingNAV] = useState(true);
+
+  const getChores = useCallback(async () => {
+    const response = await axios.get("http://localhost:8080/chore/all");
+    console.log(response.data);
+    if (response.status === 200) {
+      setChores(response.data);
+      setLoadingNAV(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!chores) {
+      setLoadingNAV(true);
+      getChores();
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {}, [chores]);
+
+  useEffect(() => {
+    console.log("FUNKA FÖR I HELVETE", chores);
+  });
+
   return (
     <div className="nav">
-      <ul className="nav-ul">
-        <Link style={linkStyle} to="/Todo">
-          <li id="li-link">TODO</li>
-        </Link>
-        <li>Dishes</li>
-        <li>Washing Machine</li>
-        <li>Other</li>
-        <li>Random</li>
-      </ul>
+      {loadingNAV ? (
+        <p>loading</p>
+      ) : (
+        <ul className="nav-ul">
+          <Link style={linkStyle} to="/Todo">
+            <li className="nav li" id="li-link">
+              TODO
+            </li>
+          </Link>
+          {chores.map((chore) => (
+            <Chore
+              key={chore.id}
+              chore={chore}
+              chores={chores}
+              setChores={setChores}
+            />
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
