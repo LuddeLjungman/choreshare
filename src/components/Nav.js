@@ -28,7 +28,6 @@ const Nav = () => {
 
   const getChores = useCallback(async () => {
     const response = await axios.get("http://localhost:8080/chore/all");
-    console.log(response.data);
     if (response.status === 200) {
       setChores(response.data);
       setLoadingNAV(false);
@@ -43,10 +42,6 @@ const Nav = () => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {}, [chores]);
-
-  useEffect(() => {
-    console.log("FUNKA FÖR I HELVETE", chores);
-  });
 
   return (
     <div className="nav">

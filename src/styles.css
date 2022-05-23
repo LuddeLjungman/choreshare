@@ -117,6 +117,7 @@
     transition: all 0.3s ease;
     border-radius: 8px;
     font-size: 1.4rem;
+    margin-left: 5%;
   }
 
   select {

@@ -42,7 +42,7 @@ const Form = ({ inputText, setInputText, todos, setTodos, setStatus }) => {
         className="todo-button"
         onClick={deleteAllCompleteHandler}
       >
-        DELETE COMPLETED
+        Delete all completed
       </button>
       <div className="inputWrapper">
         <input
