@@ -41,7 +41,7 @@ const Nav = () => {
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  useEffect(() => {}, [chores]);
+  // useEffect(() => {}, [chores]);
 
   return (
     <div className="nav">

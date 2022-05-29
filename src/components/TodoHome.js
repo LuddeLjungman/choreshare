@@ -17,20 +17,16 @@ function TodoHome() {
   const [loading, setLoading] = useState(true);
 
   const getTodos = useCallback(async () => {
-    try {
-      const response = await api.get("/all");
-      if (response.status === 200) {
-        setTodos(response.data);
-        setLoading(false);
-      }
-    } catch (error) {
-      console.error(error.message);
+    const response = await api.get("/all");
+    if (response.status === 200) {
+      setTodos(response.data);
+      setLoading(false);
     }
   }, []);
 
   useEffect(() => {
     getTodos();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [todos]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const filterHandler = () => {
     switch (status) {
@@ -49,10 +45,6 @@ function TodoHome() {
   useEffect(() => {
     filterHandler();
   }, [todos, status]);
-
-  useEffect(() => {
-    getTodos();
-  }, [[todos]]);
 
   return (
     <div>
